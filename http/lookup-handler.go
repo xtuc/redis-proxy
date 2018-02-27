@@ -36,5 +36,3 @@ func (c HTTPService) LookupHandler(w httppkg.ResponseWriter, r *httppkg.Request)
 
 	SendKeyOk(key, value, w)
 }
-
-// Foo
