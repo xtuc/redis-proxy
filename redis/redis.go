@@ -29,7 +29,13 @@ func NewRedisClient(host string) (types.BackendInterface, error) {
 }
 
 func (client RedisClient) GetValue(key string) (string, error) {
-	return client.conn.Get(key).Result()
+	res := client.conn.Get(key)
+
+	if res == nil {
+		return "", nil
+	}
+
+	return res.Result()
 }
 
 func (client RedisClient) PutValue(key, value string) error {
